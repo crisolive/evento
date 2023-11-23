@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}"
+>
+<head>
+	
+    <title>Cadastro Artigo</title>
+</head>
+<body>
+	<div layout:fragment="conteudo">
+    <div class="box">
+        <h1>Cadastro Artigo</h1>
+        <form  method="post" action="/artigo" >
+			<input type="hidden" name="_method" value="put" th:if="${artigo!= null}">
+			<input type="hidden" name="id" th:value="${artigo?.id}">
+			
+			<div class="form-group">
+				<label>Selecione uma área:</label>
+	            <select id="area_id" name="area_id" >
+					<option> -Selecione- </option>
+	               <option  th:each="area : ${areas}" 
+		               	th:value="${area.id}"
+		               th:text="${area.descricao}" selected="selected"> </option>
+	            </select>
+            </div>
+			<div>
+	            <label for="titulo"> Titulo: </label>
+	            <input type="text" id="titulo" name="titulo" th:value="${artigo?.titulo}">
+	        </div>
+	        <div>
+	            <label for="resumo"> Resumo </label>
+	            <input type="text" id="resumo" name="resumo" th:value="${artigo?.resumo}">
+	        </div>
+	        <div>
+				 <label for="keyWord1">1ª Palava-chave: </label>
+				 <input type="text" id="keyWord1" name="keyWord1" th:value="${artigo?.keyWord1}" >
+			</div>
+			<div>
+				 <label for="keyWord2"> 2ª Palava-chave: </label>
+				 <input type="text" id="keyWord2" name="keyWord2" th:value="${artigo?.keyWord2}" >
+			</div>
+			<div>
+				 <label for="keyWord3">3ª Palava-chave: </label>
+				 <input type="text" id="keyWord3" name="keyWord3" th:value="${artigo?.keyWord3}" >
+			</div>
+	        <input type="submit" value="Cadastrar">
+        </form>
+       
+    </div>
+	</div>
+</body>
+</html>

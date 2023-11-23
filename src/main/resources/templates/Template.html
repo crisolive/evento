@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../static/css/estilo.css" th:href="@{/css/estilo.css}">
+
+</head>
+<body>
+	<header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Página Inicial</a></li>
+                <li><a th:href="@{/organizador}">Organizador</a></li>
+                <li><a th:href="@{/autor}">Autor</a></li>
+                <li><a th:href="@{/area}">Area</a></li>
+                <li><a th:href="@{/artigo}">Artigo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div layout:fragment="conteudo"></div>
+
+
+</body>
+</html>

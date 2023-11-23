@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Lista de Organizadores </title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1> Lista de Organizadores</h1>
+    <a href="/organizador/formulario">Novo</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Fone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="organizador : ${lista}">
+                <td th:text="${organizador.nome}"></td>
+                <td th:text="${organizador.email}"></td>
+                <td th:text="${organizador.fone}"></td>
+                <td>
+					<a th:href="@{/organizador/formulario?id={id}(id=${organizador.id})}">Editar</a> 
+					
+					<form action="/organizador" method="post">
+						<input type="hidden" name="_method" value="delete">
+						<input type="hidden" name="id" th:value="${organizador.id}">
+						<input type="submit" value="Excluir">
+					</form>
+				</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
